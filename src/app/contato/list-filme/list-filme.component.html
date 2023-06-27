@@ -1,0 +1,97 @@
+<div class="d-flex justify-content-between
+
+            flex-wrap flex-md-nowrap align-items-center
+
+            pt-3 pb-2 mb-3 border-bottom">
+
+  <h2 class="h2">Lista de filmes</h2>
+
+  <a routerLink="/add-filme" class="btn btn-success btn-secondary" *ngIf="!listaVazia"> Adicionar filme</a>
+
+</div>
+
+<!-- CONTEUDO -->
+
+<div class="pricing-header mx-auto" id="backlista">
+
+  <!-- LOADING SPINNER -->
+
+  <div class="loadWrapper" *ngIf="mostrarLoader">
+
+    <div class="loader"></div>
+
+  </div>
+
+  <!-- LISTA VAZIA -->
+
+  <div class="text-center" *ngIf="listaVazia">
+
+    <p>Nenhum filme adicionado ainda</p>
+
+    <a routerLink="/add-filme" class="btn btn-success"> Adicionar filme</a>
+
+  </div>
+
+  <!-- LISTA NORMAL -->
+
+  <div class="table-responsive" *ngIf="!listaVazia">
+
+    <table class="table table-bordered">
+
+      <thead>
+
+        <tr>
+
+          <th scope="col">#</th>
+
+          <th scope="col">Nome</th>
+
+          <th scope="col">ano de Lançamento</th>
+
+          <th scope="col">Preço</th>
+
+          <th class="text-center" scope="col">Editar</th>
+
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        <tr *ngFor="let filme of listafilmes | paginate: { itemsPerPage: 8, currentPage: page};
+
+                    let i = index">
+
+          <th scope="row">{{i+1}}</th>
+
+          <td>{{filme.nome}}</td>
+
+          <td>{{filme.idade}}</td>
+
+          <td>{{filme.telefone}}R$</td>
+
+          <td class="text-center action-block">
+
+            <span class="btn btn-outline-primary btn-sm"
+
+              routerLink="/edit-filme/{{filme.$key}}">Editar</span>
+
+              <span class="mx-2 btn btn-outline-danger btn-sm"
+
+               (click)="deletefilme(filme)">Remover</span>
+
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+    <pagination-controls class="text-end" previousLabel="Anterior" nextLabel="Próximo"
+
+     (pageChange)="page = $event"></pagination-controls>
+
+  </div>
+
+</div>

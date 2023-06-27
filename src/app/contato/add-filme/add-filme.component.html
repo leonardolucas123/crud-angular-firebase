@@ -1,0 +1,140 @@
+<!-- HEADER -->
+<div id="grande">
+<div class="pt-3 pb-2 mb-3 border-bottom">
+
+  <h2 class="h2">Adicionar filme</h2>
+
+</div>
+
+<!-- HEADER -->
+
+<!-- FORMULÁRIO -->
+
+<form [formGroup]="filmeForm" (ngSubmit)="submitForm()" novalidate>
+
+  <!-- ADAPTA O TAMANHO DO FORMULÁRIO DE ACORDO COM A TELA-->
+
+  <div class="row">
+
+    <div class="col-lg-6 col-md-8 col-sm-12">
+
+      <!-- LINHA 1 - CAMPO NOME -->
+
+      <div class="row">
+
+        <div class="col-md-12 mb-3">
+
+          <label
+
+            [ngClass]="{'text-danger': nome?.touched && nome?.invalid}"
+
+            for="nome" class="form-label">Nome</label>
+
+          <input
+
+            [ngClass]="{'is-invalid': nome?.touched && nome?.invalid, 'is-valid': nome?.touched && nome?.valid}"
+
+            type="text" id="nome" class="form-control" formControlName="nome" required/>
+
+          <!-- errors-->
+
+          <div class="invalid-feedback"><sup>*</sup>Nome obrigatório</div>
+
+        </div>
+
+      </div>
+
+
+      <div class="row">
+
+        <div class="col-md-12 mb-3">
+
+          <label
+
+            [ngClass]="{'text-danger': idade?.touched && idade?.invalid}"
+
+            for="idade" class="form-label">ano de Lançamento</label>
+
+          <input
+
+            [ngClass]="{'is-invalid': idade?.touched && idade?.invalid, 'is-valid': idade?.touched && idade?.valid}"
+
+            type="text"
+
+            formControlName="idade"
+
+            class="form-control"
+
+            required
+
+          />
+
+          <!-- Validation FeedBack -->
+
+          <div class="invalid-feedback"><sup>*</sup>D obrigatório</div>
+
+        </div>
+
+      </div>
+
+
+      <div class="row">
+
+        <div class="col-md-12 mb-3">
+
+          <label
+
+            [ngClass]="{'text-danger': telefone?.touched && telefone?.invalid}"
+
+            for="telefone" class="form-label">Preço:</label>
+
+          <input
+
+            [ngClass]="{'is-invalid': telefone?.touched && telefone?.invalid, 'is-valid': telefone?.touched && telefone?.valid}"
+
+            type="text"
+
+            formControlName="telefone"
+
+            class="form-control"
+
+            required
+
+          />
+
+          <!-- Validation FeedBack -->
+
+          <div class="invalid-feedback"><sup>*</sup>Informe apenas o preço</div>
+
+        </div>
+
+      </div>
+
+      <div class="form-group text-end">
+
+        <button type="button" class="btn btn-secondary mx-2" (click)="resetForm()">
+
+          Limpar
+
+        </button>
+
+        <button type="submit" class="btn btn-success mx-2" [disabled]="!filmeForm.valid">
+
+          Adicionar filme
+
+        </button>
+
+      </div>
+
+      <!-- BOTÕES DO FORMULÁRIO -->
+
+    </div>
+
+  </div>
+
+ <!-- ADAPTA O TAMANHO DO FORMULÁRIO DE ACORDO COM A TELA-->
+
+</form>
+
+<!-- FORMULÁRIO -->
+</div>
